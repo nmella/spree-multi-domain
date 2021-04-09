@@ -16,3 +16,8 @@
     <% end %>
   <% end %>
 </p>
+
+<script type="text/javascript" charset="utf-8">
+  Spree.routes.store_search = '<%= spree.admin_stores_path(format: :json) %>';
+  $('#product_store_ids').storeAutocomplete();
+</script>
