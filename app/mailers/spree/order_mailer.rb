@@ -25,5 +25,12 @@ module Spree
                            end
       mail(mail_params)
     end
+
+    def store_owner_notification_email(order)
+      @order = order.respond_to?(:id) ? order : Spree::Order.find(order)
+      current_store = @order.store
+      subject = Spree.t('order_mailer.store_owner_notification_email.subject', store_name: current_store.name)
+      mail(to: current_store.new_order_notifications_email, from: from_address, subject: subject, store_url: current_store.url)
+    end
   end
 end
