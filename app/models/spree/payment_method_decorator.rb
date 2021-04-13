@@ -2,7 +2,6 @@ module Spree
   module PaymentMethodDecorator
     def self.prepended(base)
       base.has_many :store_payment_methods
-      base.has_many :stores, through: :store_payment_methods
       base.extend ClassMethods
     end
 
