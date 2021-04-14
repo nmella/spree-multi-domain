@@ -8,8 +8,7 @@ module Spree
       private
 
       def find_stores
-        store_ids = params[:product][:store_ids]
-        params[:product][:store_ids] = store_ids.split(',') if store_ids.present?
+        params[:product][:store_ids] = params[:product][:store_ids].reject(&:empty?) if params[:product][:store_ids].present?
       end
     end
   end
